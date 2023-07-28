@@ -18,7 +18,7 @@
             </el-button-group>
           </div>
         </template>
-        <template #date-cell="{ data }">
+        <template #date-cell="{ data }" class="change">
           <p>{{ data.day.split('-').pop() }}</p>
           <template v-for="item in calendarList">
             <p class="calendar-thin" v-if="item.date === data.day">{{ item.desc }}</p>
@@ -40,7 +40,8 @@
     </Waterfall>
   </div>
 </template>
-
+<!-- 暴露顶层绑定给于模板 -->
+<!-- 任何在 <script setup> 声明的顶层的绑定 (包括变量，函数声明，以及 import 引入的内容) 都能在模板中直接使用 -->
 <script setup>
 import { ref } from 'vue'
 import { useHome } from '@/store/home'
@@ -61,6 +62,7 @@ const recordList = homeStore.recordList
 
 
 </script>
+
 
 <script>
   export default {
